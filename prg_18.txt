@@ -1,0 +1,190 @@
+
+> use movie
+switched to db movie
+> show collections
+MovieDetails
+system.indexes
+> db.MovieDetails.insert([{title:"Inception",writer:"Nolan",year:2010,actors:['D
+icaprio','Elen Page','Tom Hardy']}])
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 1,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+
+
+> db.MovieDetails.find()
+{ "_id" : ObjectId("628c59fd84d91acdf368cf6d"), "title" : "Inception", "writer"
+: "Nolan", "year" : 2010, "actors" : [ "Dicaprio", "Elen Page", "Tom Hardy" ] }
+> db.MovieDetails.insert([{title:"Dark Knight",writer:"Nolan",year:2008,actors:[
+'Christian Bale','Heath Ledger']},{title:"Forrest Gump",writer:"Robert Zemeckis"
+,year: 1994,actors:['Tom Hanks','Robin Wright']}])
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 2,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+
+> db.MovieDetails.insert([{title:"Interstellar",writer:"Nolan",year:2014,actors:
+['Mathew McConaughey','Anne Hathaway']}])
+BulkWriteResult({
+        "writeErrors" : [ ],
+        "writeConcernErrors" : [ ],
+        "nInserted" : 1,
+        "nUpserted" : 0,
+        "nMatched" : 0,
+        "nModified" : 0,
+        "nRemoved" : 0,
+        "upserted" : [ ]
+})
+
+> db.MovieDetails.insert({title:"The Prestige",writer:"Nolan",year:2006,actors:[
+'Christian Bale','Hugh Jackman','Scarlet Johansan]']})
+WriteResult({ "nInserted" : 1 })
+
+> db.MovieDetails.insert({title:"Shutter Island",writer:"Martin Scorcesse",year:
+2010,actors:['Dicaprio','Mark Ruffalo']})
+WriteResult({ "nInserted" : 1 })
+
+> db.MovieDetails.find().pretty()
+{
+        "_id" : ObjectId("628c59fd84d91acdf368cf6d"),
+        "title" : "Inception",
+        "writer" : "Nolan",
+        "year" : 2010,
+        "actors" : [
+                "Dicaprio",
+                "Elen Page",
+                "Tom Hardy"
+        ]
+}
+{
+        "_id" : ObjectId("628c5b9684d91acdf368cf6e"),
+        "title" : "Dark Knight",
+        "writer" : "Nolan",
+        "year" : 2008,
+        "actors" : [
+                "Christian Bale",
+                "Heath Ledger"
+        ]
+}
+{
+        "_id" : ObjectId("628c5b9684d91acdf368cf6f"),
+        "title" : "Forrest Gump",
+        "writer" : "Robert Zemeckis",
+        "year" : 1994,
+        "actors" : [
+                "Tom Hanks",
+                "Robin Wright"
+        ]
+}
+{
+        "_id" : ObjectId("628c5bed84d91acdf368cf70"),
+        "title" : "Interstellar",
+        "writer" : "Nolan",
+        "year" : 2014,
+        "actors" : [
+                "Mathew McConaughey",
+                "Anne Hathaway"
+        ]
+}
+{
+        "_id" : ObjectId("628c5c4d84d91acdf368cf71"),
+        "title" : "The Prestige",
+        "writer" : "Nolan",
+        "year" : 2006,
+        "actors" : [
+                "Christian Bale",
+                "Hugh Jackman",
+                "Scarlet Johansan]"
+        ]
+}
+{
+        "_id" : ObjectId("628c5cf684d91acdf368cf72"),
+        "title" : "Shutter Island",
+        "writer" : "Martin Scorcesse",
+        "year" : 2010,
+        "actors" : [
+                "Dicaprio",
+                "Mark Ruffalo"
+        ]
+}
+
+
+
+> db.MovieDetails.updateMany({writer: "Nolan"},{$set:{writer: "Christopher Nolan"}})
+{ "acknowledged" : true, "matchedCount" : 3, "modifiedCount" : 3 }
+> db.MovieDetails.find().pretty()
+{
+        "_id" : ObjectId("628c59fd84d91acdf368cf6d"),
+        "title" : "Inception",
+        "writer" : "Christopher Nolan",
+        "year" : 2010,
+        "actors" : [
+                "Dicaprio",
+                "Elen Page",
+                "Tom Hardy"
+        ]
+}
+{
+        "_id" : ObjectId("628c5b9684d91acdf368cf6e"),
+        "title" : "Dark Knight",
+        "writer" : "Christopher Nolan",
+        "year" : 2008,
+        "actors" : [
+                "Christian Bale",
+                "Heath Ledger"
+        ]
+}
+{
+        "_id" : ObjectId("628c5b9684d91acdf368cf6f"),
+        "title" : "Forrest Gump",
+        "writer" : "Robert Zemeckis",
+        "year" : 1994,
+        "actors" : [
+                "Tom Hanks",
+                "Robin Wright"
+        ]
+}
+{
+        "_id" : ObjectId("628c5bed84d91acdf368cf70"),
+        "title" : "Interstellar",
+        "writer" : "Christopher Nolan",
+        "year" : 2014,
+        "actors" : [
+                "Mathew McConaughey",
+                "Anne Hathaway"
+        ]
+}
+{
+        "_id" : ObjectId("628c5c4d84d91acdf368cf71"),
+        "title" : "The Prestige",
+        "writer" : "Christopher Nolan",
+        "year" : 2006,
+        "actors" : [
+                "Christian Bale",
+                "Hugh Jackman",
+                "Scarlet Johansan]"
+        ]
+}
+{
+        "_id" : ObjectId("628c5cf684d91acdf368cf72"),
+        "title" : "Shutter Island",
+        "writer" : "Martin Scorcesse",
+        "year" : 2010,
+        "actors" : [
+                "Dicaprio",
+                "Mark Ruffalo"
+        ]
+}
+>
