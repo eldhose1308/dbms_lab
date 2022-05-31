@@ -1,0 +1,40 @@
+
+SQL> DECLARE
+  
+    c_id empl.id%type;
+  
+    c_name empl.name%type;
+  
+    c_addr empl.address%type;
+  
+    CURSOR c_empl is
+ 
+   SELECT id, name, address FROM empl;
+ 
+   BEGIN
+ 
+   OPEN c_empl;
+ 
+   LOOP
+ 
+   FETCH c_empl into c_id, c_name, c_addr;
+ 
+   EXIT WHEN c_empl%notfound;
+ 
+   dbms_output.put_line(c_id || ' ' || c_name || ' ' || c_addr);
+
+   END LOOP;
+ 
+   CLOSE c_empl;
+ 
+   END;
+ 
+   /
+1 Ramesh Allahabad
+2 Suresh Kanpur
+3 Mahesh Ghaziabad
+4 Chandan Noida
+5 Alex Paris
+6 Sunita Delhi
+
+PL/SQL procedure successfully completed.
