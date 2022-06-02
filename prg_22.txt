@@ -1,0 +1,12 @@
+
+> db.createUser({user : "user", pwd : "password",roles : [{ role : "userAdmin
+AnyDatabase",db: "admin"}]})
+Successfully added user: {
+        "user" : "eldhose",
+        "roles" : [
+                {
+                        "role" : "userAdminAnyDatabase",
+                        "db" : "admin"
+                }
+        ]
+}
